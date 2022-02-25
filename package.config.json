@@ -1,0 +1,79 @@
+{
+  "@nfjs/migrate": {
+    "doMigrate": {
+      "type": "Boolean",
+      "description": "Запускать процесса обновлениея бд при старте приложения",
+      "default": false
+    },
+    "doSilent": {
+      "type": "Boolean",
+      "description": "Проводить процесс обновления только на значениях по-умолчанию, не запрашивая ничего",
+      "default": false
+    },
+    "checkType": {
+      "type": "Enum",
+      "possibleValues": ["simple", "force"],
+      "description": "Способ проверки необходимости выполнения обновления объектов и данных"
+    },
+    "defaultRunType": {
+      "type": "Enum",
+      "possibleValues": ["r", "m", "t", "f", "v"],
+      "description": "Режим запуска",
+      "default": "r"
+    },
+    "defaultDoUnsafeDrop": {
+      "type": "Boolean",
+      "description": "Выполнять блок unsafedrop(удаление таблиц и колонок) из сравнения таблиц или нет",
+      "default": false
+    },
+    "defaultDoInit": {
+      "need": {
+        "type": "Boolean",
+        "description": "Инициализировать ли первого пользователя приложения для начала работы приложения",
+        "default": false
+      },
+      "appAdminName": {
+        "description": "Имя первого пользователя приложения - администратора",
+        "default": "admin"
+      },
+      "appAdminPassword": {
+        "description": "Пароль для appAdminName"
+      },
+      "appAdminRole": {
+        "description": "Имя роли для первого пользователя приложения - администратора, которой будут назначены права для начала работы",
+        "default": "admin"
+      }
+    },
+    "data_providers": {
+      "default": {
+        "checkUserName": {
+          "description": "Имя пользователя бд, под которым выполняется проверка необходимости запуска обновления"
+        },
+        "checkUserPassword": {
+          "description": "Пароль пользователя в checkUserName"
+        },
+        "adminUserName": {
+          "description": "Имя пользователя бд, под которым выполняется обновление. Владелец всех объектов"
+        },
+        "adminUserPassword": {
+          "description": "Пароль пользователя в adminUserName"
+        },
+        "superUserName": {
+          "description": "Имя супер-пользователя бд, под которым создаются системные объекты бд (расширения)"
+        },
+        "superUserPassword": {
+          "description": "Пароль пользователя в superUserName"
+        }
+      }
+    },
+    "onlySchemas": {
+      "type": "Array<String>",
+      "description": "Ограничивающий перечень схем базы данных для которых выполнять обновление"
+    },
+    "grantAllFunction": {
+      "type": "String",
+      "description": "Имя функции для назначения прав на объекты после обновления. По-умолчанию nfc.f_db8grant_all",
+      "default": "nfc.f_db8grant_all"
+    }
+  }
+}

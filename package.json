@@ -1,0 +1,36 @@
+{
+    "name": "@nfjs/migrate",
+    "version": "1.0.0",
+    "description": "Database migration tool",
+    "license": "MIT",
+    "type": "module",
+    "main": "index.js",
+    "repository": {
+        "url": "https://github.com/nf-framework/nf-migrate.git"
+    },
+    "author": {
+        "name": "Andrey Maksimov",
+        "email": "andrmaxmail@gmail.com"
+    },
+    "contributors": [
+        {
+            "name": "Dmitry Boikov",
+            "email": "boikovdv@gmail.com"
+        },
+        {
+            "name": "Azat Yamalov",
+            "email": "yamalov.azat@live.com"
+        }
+    ],
+    "dependencies": {
+        "@nfjs/core": "^1.0.0",
+        "@nfjs/back": "^1.0.0",
+        "@nfjs/ei": "^1.0.0",
+        "@nfjs/dbo-compare": "^1.0.0",
+        "prompts": "^2.4.1"
+    },
+    "exports": {
+        ".": "./index.js",
+        "./nf-module.js": "./nf-module.js"
+    }
+}

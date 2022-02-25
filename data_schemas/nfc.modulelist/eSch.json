@@ -1,0 +1,72 @@
+{
+    "schema": {
+        "main": "nfc.modulelist",
+        "extract": {
+            "nfc.modulelist": {
+                "type": "db",
+                "table": "nfc.modulelist",
+                "pk": "code",
+                "output": "named",
+                "fields": [
+                    "code",
+                    "caption"
+                ],
+                "filter": {
+                    "schema": "code"
+                },
+                "details":["nfc.unitlist", "nfc.options"]
+            },
+            "nfc.unitlist": {
+                "type": "db",
+                "table": "nfc.unitlist",
+                "pk": "code",
+                "output": "named",
+                "parentkey": "mdl",
+                "fields": [
+                    "code",
+                    "caption",
+                    "pcode",
+                    "mdl",
+                    "opt"
+                ],
+                "sort": ["code"],
+                "details":["nfc.unitbps"]
+            },
+            "nfc.unitbps": {
+                "type": "db",
+                "table": "nfc.unitbps",
+                "pk": "code",
+                "parentkey": "unit",
+                "output": "named",
+                "fields": [
+                    "code",
+                    "caption",
+                    "exec_function",
+                    "use_privs"
+                ],
+                "sort": ["code"]
+            },
+            "nfc.options": {
+                "type": "db",
+                "table": "nfc.options",
+                "pk": "code",
+                "output": "named",
+                "parentkey": "mdl",
+                "fields": [
+                    "code",
+                    "caption",
+                    "note",
+                    "mdl",
+                    "val",
+                    "datatype",
+                    "val_limits",
+                    "multi_val"
+                ],
+                "sort": ["code"]
+            }
+        },
+        "load":{
+            "type": "jsonString"
+        }
+    }
+}

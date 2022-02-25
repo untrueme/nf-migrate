@@ -1,0 +1,72 @@
+{
+    "schema": {
+        "main": "nfc.modulelist",
+        "extract": {
+            "nfc.modulelist": {
+                "type": "json",
+                "valueScoped": true
+            }
+        },
+        "load": {
+            "type": "execSqlArray",
+            "unitField": "$0",
+            "unitData": ":$0",
+            "units": {
+                "nfc.modulelist": {
+                    "type": "db",
+                    "tablename": "nfc.modulelist",
+                    "pk": "code",
+                    "uk": ["code"],
+                    "fields": [
+                        "code",
+                        "caption"
+                    ],
+                    "details":["nfc.unitlist","nfc.options"]
+                },
+                "nfc.unitlist": {
+                    "type": "db",
+                    "tablename": "nfc.unitlist",
+                    "pk": "code",
+                    "uk": ["code"],
+                    "parentkey": "mdl",
+                    "fields": [
+                        "code",
+                        "caption",
+                        "pcode",
+                        "opt"
+                    ],
+                    "details":["nfc.unitbps"]
+                },
+                "nfc.unitbps": {
+                    "type": "db",
+                    "tablename": "nfc.unitbps",
+                    "pk": "code",
+                    "uk": ["code"],
+                    "parentkey": "unit",
+                    "fields": [
+                        "code",
+                        "caption",
+                        "exec_function",
+                        "use_privs"
+                    ]
+                },
+                "nfc.options": {
+                    "type": "db",
+                    "tablename": "nfc.options",
+                    "pk": "code",
+                    "uk": ["code"],
+                    "parentkey": "mdl",
+                    "fields": [
+                        "code",
+                        "caption",
+                        "note",
+                        "val",
+                        "datatype",
+                        "val_limits",
+                        "multi_val"
+                    ]
+                }
+            }
+        }
+    }
+}
